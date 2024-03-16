@@ -44,3 +44,5 @@ ethereal.flightpotion_duration (Flight Potion Duration) int 300
 ethereal.clear_default_biomes (Clear Default Biomes and Decoration) bool true
 
 ethereal.abundant_onions (Abundant Onions) bool true
+
+ethereal.saplings_protection_check (Check for area protection before placing saplings) bool false

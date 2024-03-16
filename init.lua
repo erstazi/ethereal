@@ -110,7 +110,8 @@ dofile(path .. "/dirt.lua")
 dofile(path .. "/food.lua")
 dofile(path .. "/wood.lua")
 dofile(path .. "/leaves.lua")
-dofile(path .. "/sapling.lua")
+dofile(path .. "/schems.lua")
+dofile(path .. "/sapling.lua") -- depends: schems
 dofile(path .. "/fishing.lua")
 dofile(path .. "/extra.lua")
 dofile(path .. "/sealife.lua")
@@ -122,7 +123,6 @@ end
 
 dofile(path .. "/biomes.lua")
 dofile(path .. "/ores.lua")
-dofile(path .. "/schems.lua")
 dofile(path .. "/decor.lua")
 dofile(path .. "/compatibility.lua")
 dofile(path .. "/stairs.lua")

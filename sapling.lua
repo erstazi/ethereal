@@ -21,33 +21,58 @@ minetest.register_node("ethereal:basandra_bush_sapling", {
 	grown_height = 2
 })
 
+local saplings_protection_check = minetest.settings:get_bool("ethereal.saplings_protection_check", false)
+local prepare_on_place
+if saplings_protection_check then
+	function prepare_on_place(name, size)
+		-- minp, maxp to be checked, relative to sapling pos
+		-- minp_relative.y = 1 because sapling pos has been checked
+		local minp = {x = -math.ceil(size.x/2), y = 1, z = -math.ceil(size.z/2)}
+		local maxp = {x = math.ceil(size.x/2), y = size.y-1, z = math.ceil(size.z/2)}
+		return function(itemstack, placer, pointed_thing)
+			itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
+				name, minp, maxp, 4)
+
+			return itemstack
+		end
+	end
+else
+	function prepare_on_place() return nil end
+end
+
 -- Bamboo Sprout
-minetest.register_node("ethereal:bamboo_sprout", {
-	description = S("Bamboo Sprout"),
-	drawtype = "plantlike",
-	tiles = {"ethereal_bamboo_sprout.png"},
-	inventory_image = "ethereal_bamboo_sprout.png",
-	wield_image = "ethereal_bamboo_sprout.png",
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	groups = {
-		food_bamboo_sprout = 1, snappy = 3, attached_node = 1, flammable = 2,
-		dig_immediate = 3, ethereal_sapling = 1, sapling = 1,
-	},
-	sounds = default.node_sound_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0, 4 / 16}
-	},
-	on_use = minetest.item_eat(2),
-	grown_height = 11
-})
+do
+	local schem = "bambootree"
+	local size = ethereal[schem].size
+	minetest.register_node("ethereal:bamboo_sprout", {
+		description = S("Bamboo Sprout"),
+		drawtype = "plantlike",
+		tiles = {"ethereal_bamboo_sprout.png"},
+		inventory_image = "ethereal_bamboo_sprout.png",
+		wield_image = "ethereal_bamboo_sprout.png",
+		paramtype = "light",
+		sunlight_propagates = true,
+		walkable = false,
+		groups = {
+			food_bamboo_sprout = 1, snappy = 3, attached_node = 1, flammable = 2,
+			dig_immediate = 3, ethereal_sapling = 1, sapling = 1,
+		},
+		sounds = default.node_sound_defaults(),
+		selection_box = {
+			type = "fixed",
+			fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0, 4 / 16}
+		},
+		on_use = minetest.item_eat(2),
+		grown_height = size.y,
+		on_place = prepare_on_place("ethereal:bamboo_sprout", size),
+	})
+end
 
 
 -- Register Saplings
-local register_sapling = function(name, desc, texture, height)
-
+local register_sapling = function(name, desc, texture, schem)
+	assert(ethereal[schem], "Schema " .. schem .. " does not exist!")
+	local size = ethereal[schem].size
 	minetest.register_node(name .. "_sapling", {
 		description = S(desc .. " Tree Sapling"),
 		drawtype = "plantlike",
@@ -67,25 +92,26 @@ local register_sapling = function(name, desc, texture, height)
 			ethereal_sapling = 1, attached_node = 1, sapling = 1
 		},
 		sounds = default.node_sound_leaves_defaults(),
-		grown_height = height
+		grown_height = size.y,
+		on_place = prepare_on_place(name .. "_sapling", size),
 	})
 end
 
-register_sapling("ethereal:willow", "Willow", "ethereal_willow_sapling", 14)
-register_sapling("ethereal:yellow_tree", "Healing", "ethereal_yellow_tree_sapling", 19)
-register_sapling("ethereal:big_tree", "Big", "ethereal_big_tree_sapling", 7)
-register_sapling("ethereal:banana_tree", "Banana", "ethereal_banana_tree_sapling", 8)
-register_sapling("ethereal:frost_tree", "Frost", "ethereal_frost_tree_sapling", 19)
-register_sapling("ethereal:mushroom", "Mushroom", "ethereal_mushroom_sapling", 11)
-register_sapling("ethereal:palm", "Palm", "moretrees_palm_sapling", 9)
+register_sapling("ethereal:willow", "Willow", "ethereal_willow_sapling","willow")
+register_sapling("ethereal:yellow_tree", "Healing", "ethereal_yellow_tree_sapling", "yellowtree")
+register_sapling("ethereal:big_tree", "Big", "ethereal_big_tree_sapling", "bigtree")
+register_sapling("ethereal:banana_tree", "Banana", "ethereal_banana_tree_sapling", "bananatree")
+register_sapling("ethereal:frost_tree", "Frost", "ethereal_frost_tree_sapling", "frosttrees")
+register_sapling("ethereal:mushroom", "Mushroom", "ethereal_mushroom_sapling", "mushroomone")
+register_sapling("ethereal:palm", "Palm", "moretrees_palm_sapling", "palmtree")
 register_sapling("ethereal:giant_redwood", "Giant Redwood",
-		"ethereal_giant_redwood_sapling", 33)
-register_sapling("ethereal:redwood", "Redwood", "ethereal_redwood_sapling", 21)
-register_sapling("ethereal:orange_tree", "Orange", "ethereal_orange_tree_sapling", 6)
-register_sapling("ethereal:birch", "Birch", "moretrees_birch_sapling", 7)
-register_sapling("ethereal:sakura", "Sakura", "ethereal_sakura_sapling", 10)
-register_sapling("ethereal:lemon_tree", "Lemon", "ethereal_lemon_tree_sapling", 7)
-register_sapling("ethereal:olive_tree", "Olive", "ethereal_olive_tree_sapling", 10)
+		"ethereal_giant_redwood_sapling", "redwood_tree")
+register_sapling("ethereal:redwood", "Redwood", "ethereal_redwood_sapling", "redwood_tree")
+register_sapling("ethereal:orange_tree", "Orange", "ethereal_orange_tree_sapling", "orangetree")
+register_sapling("ethereal:birch", "Birch", "moretrees_birch_sapling", "birchtree")
+register_sapling("ethereal:sakura", "Sakura", "ethereal_sakura_sapling", "sakura_tree")
+register_sapling("ethereal:lemon_tree", "Lemon", "ethereal_lemon_tree_sapling", "lemontree")
+register_sapling("ethereal:olive_tree", "Olive", "ethereal_olive_tree_sapling", "olivetree")
 
 
 local add_tree = function (pos, ofx, ofy, ofz, schem, replace)
