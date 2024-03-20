@@ -61,8 +61,6 @@ local def_biomes = {
 	["rainforest_ocean"] = 1,
 	["deciduous_forest_shore"] = 1,
 	["deciduous_forest_under"] = 1,
-	["coniferous_forest_dunes"] = 1,
-	["coniferous_forest"] = 1
 }
 
 
