@@ -756,35 +756,9 @@ if minetest.registered_nodes["default:coral_green"] then
 	})
 end
 
-
-local random = math.random
-
--- Generate Illumishroom in caves on top of coal
-minetest.register_on_generated(function(minp, maxp)
-
-	if minp.y > -30 or maxp.y < -3000 then
-		return
-	end
-
-	local bpos
-	local coal = minetest.find_nodes_in_area_under_air(
-			minp, maxp, "default:stone_with_coal")
-
-	for n = 1, #coal do
-
-		if random(2) == 1 then
-
-			bpos = {x = coal[n].x, y = coal[n].y + 1, z = coal[n].z}
-
-			if bpos.y > -3000 and bpos.y < -2000 then
-				minetest.swap_node(bpos, {name = "ethereal:illumishroom3"})
-
-			elseif bpos.y > -2000 and bpos.y < -1000 then
-				minetest.swap_node(bpos, {name = "ethereal:illumishroom2"})
-
-			elseif bpos.y > -1000 and bpos.y < -30 then
-				minetest.swap_node(bpos, {name = "ethereal:illumishroom"})
-			end
-		end
-	end
-end)
+-- register async mapgen script
+if minetest.register_mapgen_script then
+	minetest.register_mapgen_script(minetest.get_modpath("ethereal") .. "/decor_on_generated.lua")
+else
+	dofile(minetest.get_modpath("ethereal") .. "/decor_on_generated.lua")
+end
