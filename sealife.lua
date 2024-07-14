@@ -192,7 +192,7 @@ local function register_coral(name, description, texture)
 				return
 			end
 
-			if def_down.name ~= "default:sand" then
+			if def_down.name ~= "default:sand" and def_down.name ~= "ethereal:sandy" then
 				return
 			end
 
