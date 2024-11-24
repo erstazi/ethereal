@@ -188,28 +188,50 @@ minetest.register_craft({
 
 -- candle helper function
 
+local candle_colors = {
+	[""]="F7F2CD",
+	black="40403F",
+	blue="5587B4",
+	brown="6D4728",
+	cyan="78F1B1",
+	dark_green="23AF23",
+	dark_grey="868178",
+	green="96CA32",
+	grey="C0BAAF",
+	magenta="C22E7D",
+	orange="E88817",
+	pink="FA8B91",
+	red="CF4727",
+	violet="975EC0",
+	yellow="FFF74D",
+}
+
+
 local function add_candle(col, dcol)
+	local name = "ethereal:candle" .. ((col == "") and col or "_"..col)
 
-	local rcol = ""
-
-	if col ~= "" then
-		rcol = col
-		col = "_" .. col
-	end
-
-	minetest.register_node("ethereal:candle" .. col, {
+	minetest.register_node(name, {
 		description = S(dcol .. "Candle"),
 		drawtype = "plantlike",
-		inventory_image = "ethereal_candle" .. col .. "_static.png",
-		wield_image = "ethereal_candle" .. col .. "_static.png",
-		tiles = {
+		inventory_overlay = "ethereal_candle_static_flame.png",
+		wield_overlay = "ethereal_candle_static_flame.png",
+		inventory_image = "ethereal_candle_static.png",
+		wield_image = "ethereal_candle_static.png",
+		overlay_tiles = {
 			{
-				name = "ethereal_candle" .. col .. ".png",
+				name = "ethereal_candle_flame.png",
+				color="#ffffff";
 				animation = {
 					type="vertical_frames", aspect_w = 32, aspect_h = 32, length = 1.0
 				}
 			}
 		},
+		tiles = {
+			{
+				name = "ethereal_candle.png",
+			}
+		},
+		color = "#"..candle_colors[col],
 		paramtype = "light",
 		light_source = 11,
 		sunlight_propagates = true,
@@ -224,16 +246,16 @@ local function add_candle(col, dcol)
 	if col ~= "" then
 
 		minetest.register_craft({
-			output = "ethereal:candle" .. col,
+			output = name,
 			recipe = {
-				{"group:candle", "dye:" .. rcol},
+				{"group:candle", "dye:" .. col},
 			}
 		})
 	end
 end
 
 add_candle("", "")
-add_candle("black", "Black ") -- candle colour textures by wRothbard
+add_candle("black", "Black ")
 add_candle("blue", "Blue ")
 add_candle("brown", "Brown ")
 add_candle("cyan", "Cyan ")
