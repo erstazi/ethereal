@@ -1,4 +1,3 @@
-
 local S = minetest.get_translator("ethereal")
 
 -- Spore Grass
@@ -301,6 +300,7 @@ add_moss("mushroom", "Mushroom", "ethereal_grass_mushroom_top.png", "ethereal:sp
 add_moss("fiery", "Fiery", "ethereal_grass_fiery_top.png", "ethereal:dry_shrub")
 add_moss("gray", "Gray", "ethereal_grass_gray_top.png", "ethereal:snowygrass")
 add_moss("green", "Green", "default_grass.png", "default:jungleleaves")
+add_moss("bamboo", "Bamboo", "ethereal_grass_bamboo_top.png", "ethereal:bamboo_leaves")
 
 -- shroom helper function
 
