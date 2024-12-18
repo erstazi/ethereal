@@ -418,7 +418,7 @@ if ethereal.reefs == 1 then
 			seed = 7013, octaves = 3, persist = 1},
 		biomes = {"desert_ocean", "grove_ocean"},
 		y_min = -8, y_max = -2,
-		schematic = path .. "corals.mts",
+		schematic = "schematics/corals.mts",
 		rotation = "random"})
 end
 
