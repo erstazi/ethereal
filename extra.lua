@@ -523,7 +523,7 @@ core.register_tool("ethereal:light_staff", {
 		local stone = def and def.groups.stone and def.groups.stone == 1
 		local glo = ethereal.lightstaff_recipes[node] or "ethereal:glostone"
 
-		if glo then
+		if glo and stone then
 
 			core.set_node(pos, {name = glo})
 
