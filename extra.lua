@@ -521,9 +521,10 @@ core.register_tool("ethereal:light_staff", {
 		local node = core.get_node(pos).name
 		local def = core.registered_nodes[node]
 		local stone = def and def.groups.stone and def.groups.stone == 1
-		local glo = ethereal.lightstaff_recipes[node] or "ethereal:glostone"
+		local glo = ethereal.lightstaff_recipes[node]
 
-		if glo and stone then
+		if glo or stone then
+			glo = glo or "ethereal:glostone"
 
 			core.set_node(pos, {name = glo})
 
