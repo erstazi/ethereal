@@ -556,13 +556,28 @@ if core.get_modpath("fireflies") then
 				"swamp"},
 		decoration = "fireflies:hidden_firefly", place_offset_y = 2})
 
-	-- restart firefly timers
-	core.register_lbm({
-		name = ":fireflies:firefly_timer",
-		nodenames = {"fireflies:firefly", "fireflies:hidden_firefly"},
-		run_at_every_load = false,
+	-- switch fireflies based on time of day
+	local function firefly_timer(pos)
+		local tod = core.get_timeofday()
+		local node = core.get_node(pos)
 
-		action = function(pos) core.get_node_timer(pos):start(5) end
+		if tod < 0.25 or tod >= 0.75 then
+			if node.name == "fireflies:hidden_firefly" then
+				core.set_node(pos, {name = "fireflies:firefly"})
+			end
+		elseif node.name == "fireflies:firefly" then
+			core.set_node(pos, {name = "fireflies:hidden_firefly"})
+		end
+
+		core.get_node_timer(pos):start(30)
+	end
+
+	core.register_lbm({
+		name = ":ethereal:firefly_timer",
+		nodenames = {"fireflies:firefly", "fireflies:hidden_firefly"},
+		run_at_every_load = true,
+
+		action = function(pos) firefly_timer(pos) end
 	})
 end
 
