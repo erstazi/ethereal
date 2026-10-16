@@ -101,6 +101,16 @@ several examples are at the documentation of [api.txt](api.txt) file.
 A huge thanks to Chinchow who was the inspiration behind Ethereal and everyone
 who helped make this mod bigger and better throughout it's release :)
 
+### 1.35
+
+- Add charcoal block.
+- Update screenshots.
+- Make etherium ore renewable.
+- Add starfish by Sara.
+- Update translations.
+- Tweak n Tidy a lotta code.
+- Add Tawny Woods biome and flora.
+
 ### 1.34
  - Add animated falling leaves (thanks EdgeLoopRepeat).
  - Add xnether falling leaves.

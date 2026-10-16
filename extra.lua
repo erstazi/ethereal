@@ -102,30 +102,11 @@ core.register_craft({
 	}
 })
 
--- Bamboo Block
-
-core.register_node("ethereal:bamboo_block", {
-	description = S("Bamboo Block"),
-	tiles = {"ethereal_bamboo_floor.png"},
-	paramtype = "light",
-	groups = {snappy = 3, choppy = 3 , flammable = 2, wood = 1},
-	sounds = default.node_sound_wood_defaults()
-})
-
 core.register_craft({
 	output = "ethereal:bamboo_block",
 	recipe = {
 		{"ethereal:bamboo_floor"},
 		{"ethereal:bamboo_floor"}
-	}
-})
-
-core.register_craft({
-	output = "ethereal:bamboo_block",
-	recipe = {
-		{"ethereal:bamboo", "ethereal:bamboo", "ethereal:bamboo"},
-		{"ethereal:bamboo", "ethereal:bamboo", "ethereal:bamboo"},
-		{"ethereal:bamboo", "ethereal:bamboo", "ethereal:bamboo"}
 	}
 })
 
@@ -415,9 +396,12 @@ core.register_craftitem("ethereal:charcoal_lump", {
 
 core.register_craft({
 	output = "ethereal:charcoal_lump 2",
-	recipe = {
-		{"ethereal:scorched_tree"}
-	}
+	recipe = { {"ethereal:scorched_tree"} }
+})
+
+core.register_craft({
+	output = "ethereal:charcoal_lump 2",
+	recipe = { {"ethereal:all_faces_scorched_tree"} }
 })
 
 core.register_craft({
@@ -531,7 +515,6 @@ core.register_tool("ethereal:light_staff", {
 
 			return itemstack
 		end
-
 	end
 })
 

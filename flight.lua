@@ -36,6 +36,8 @@ local function set_flight(user, set)
 	local name = user and user:get_player_name() ; if not name then return end
 	local privs = core.get_player_privs(name)
 
+	if privs.fly == set then return end
+
 	privs.fly = set
 
 	core.set_player_privs(name, privs)
@@ -46,27 +48,29 @@ end
 
 -- after function
 
-local function ethereal_set_flight(user)
+local function update_flight(user)
 
 	local name = user and user:get_player_name() ; if not name then return end
 
 	local timer = tonumber(get_timer(user)) or 0
 
+	if timer == -99 then return end -- timer set to default
+
 	-- if timer ran out then remove 'fly' privelage
-	if timer <= 0 and timer ~= -99 then
+	if timer <= 0 then
 		set_flight(user, nil) ; return
 	end
 
-	local privs = core.get_player_privs(name)
-
-	-- have we already applied 'fly' privelage?
-	if not privs.fly then set_flight(user, true) end
+	-- apply fly privs
+	if not has_fly(name) then
+		set_flight(user, true)
+	end
 
 	-- handle timer
 	timer = timer - timer_check
 
 	-- show expiration message and play sound
-	if timer <= 10 then
+	if timer > 0 and timer <= 10 then
 
 		core.chat_send_player(name, core.get_color_escape_sequence("#ff5500")
 				.. S("Flight timer about to expire!"))
@@ -78,7 +82,7 @@ local function ethereal_set_flight(user)
 
 	-- restart checks
 	core.after(timer_check, function()
-		ethereal_set_flight(user)
+		update_flight(user)
 	end)
 end
 
@@ -87,7 +91,7 @@ end
 core.register_on_joinplayer(function(player)
 
 	-- wait 2 seconds before doing flight checks on player
-	core.after(2.0, function(player)
+	core.after(2.0, function()
 
 		-- get player name and timer
 		local name = player and player:get_player_name() ; if not name then return end
@@ -98,7 +102,9 @@ core.register_on_joinplayer(function(player)
 			set_timer(player, "-99") ; return
 		end
 
-		timer = tonumber(timer) or 0
+		timer = tonumber(timer)
+
+		if not timer or timer <= 0 then return end
 
 		-- if timer is set to default then return
 		if timer == -99 then return end
@@ -107,10 +113,10 @@ core.register_on_joinplayer(function(player)
 		if has_fly(name) then
 
 			core.after(timer_check, function()
-				ethereal_set_flight(player)
+				update_flight(player)
 			end)
 		end
-	end, player)
+	end)
 end)
 
 -- potion item
@@ -136,10 +142,9 @@ core.register_node("ethereal:flight_potion", {
 
 		-- get info
 		local name = user:get_player_name()
-		local privs = core.get_player_privs(name)
 		local timer = get_timer(user)
 
-		if privs.fly then
+		if has_fly(name) then
 
 			local msg = timer
 
@@ -148,7 +153,7 @@ core.register_node("ethereal:flight_potion", {
 			core.chat_send_player(name, core.get_color_escape_sequence("#ffff00")
 					.. S("Flight already granted, @1 seconds left!", msg))
 
-			return
+			return itemstack
 		end
 
 		set_timer(user, flight_secs) -- set flight timer
@@ -158,7 +163,7 @@ core.register_node("ethereal:flight_potion", {
 				core.get_color_escape_sequence("#1eff00")
 				.. S("Flight granted, you have @1 seconds!", flight_secs))
 
-		ethereal_set_flight(user) -- start check
+		update_flight(user) -- start check
 
 		itemstack:take_item() -- take item
 

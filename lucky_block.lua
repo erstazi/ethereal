@@ -104,7 +104,8 @@ lucky_block:add_blocks({
 		{name = "ethereal:willow_sapling", max = 10},
 		{name = "ethereal:lemon_tree_sapling", max = 10},
 		{name = "ethereal:olive_tree_sapling", max = 10},
-		{name = "ethereal:mangrove_sapling", max = 10}
+		{name = "ethereal:mangrove_sapling", max = 10},
+		{name = "ethereal:poplar_sapling", max = 10}
 	}},
 	{"flo", 5, {"ethereal:blue_marble_tile"}, 2},
 	{"flo", 5, {"ethereal:blue_marble_brick"}, 2},
@@ -250,7 +251,7 @@ local pp3 = {name = "ethereal:paper_wall", param1 = 255, param2 = 3}
 local pp0 = {name = "ethereal:paper_wall", param1 = 255, param2 = 0}
 local pp1 = {name = "ethereal:paper_wall", param1 = 255, param2 = 1}
 local bam = {name = "ethereal:bamboo_floor", param1 = 255, param2 = 1}
-local dor = minetest.get_modpath("doors") and
+local dor = core.get_modpath("doors") and
 		{name = "ethereal:door_sakura_a", param1 = 255, param2 = 0} or pp2
 
 local paper_house = {

@@ -22,6 +22,18 @@ THE SOFTWARE.
 
 Textures by TenPlus1 (CC0) unless listed below...
 
+Textures by Afflatus (CC0):
+  ethereal_grass_dappled_side.png
+  ethereal_grass_dappled_top.png
+  ethereal_leaf_litter.png
+  ethereal_poplar_leaves_orange.png
+  ethereal_poplar_leaves_red.png
+  ethereal_poplar_leaves_yellow.png
+  ethereal_poplar_sapling.png
+  ethereal_poplar_trunk_top.png
+  ethereal_poplar_trunk_side.png
+  ethereal_poplar_wood.png
+
 Textures by XSSeep (CC BY-SA 4.0):
   mcl_mangrove_*.png
 

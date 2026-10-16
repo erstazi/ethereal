@@ -57,6 +57,8 @@
 {"name": "mushroom_ocean", "heat_point": 45, "humidity_point": 82, "y_min": -255, "y_max": 5},
 {"name": "magical_forest", "heat_point": 40, "humidity_point": 120, "y_min": 3, "y_max": 30},
 {"name": "magical_forest_ocean", "heat_point": 40, "humidity_point": 120, "y_min": -192, "y_max": 2},
+{"name": "tawny_woods", "heat_point": 19, "humidity_point": 114, "y_min": 3, "y_max": 70},
+{"name": "tawny_woods_ocean", "heat_point": 19, "humidity_point": 114, "y_min": -255, "y_max": 2},
 {"name": "sandstone_desert", "heat_point": 60, "humidity_point": 0, "y_min": 3, "y_max": 23},
 {"name": "sandstone_desert_ocean", "heat_point": 60, "humidity_point": 0, "y_min": -192, "y_max": 2},
 {"name": "sandstone_desert_under", "heat_point": 60, "humidity_point": 0, "y_min": -31000, "y_max": -256},

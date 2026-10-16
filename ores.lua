@@ -117,3 +117,24 @@ core.register_ore({
 		persist = 0.0
 	}
 })
+
+-- Blobs of coniferous litter dirt in Tawny biome
+
+core.register_ore({
+	ore_type = "blob",
+	ore = "default:dirt_with_coniferous_litter",
+	wherein = {"ethereal:tawny_dirt"},
+	clust_scarcity = 16 * 16 * 16,
+	clust_size = 5,
+	y_min = 3,
+	y_max = 71,
+	noise_threshold = 0.0,
+	noise_params    = {
+		offset = 0.5,
+		scale = 0.2,
+		spread = {x = 5, y = 5, z = 5},
+		seed = -316,
+		octaves = 1,
+		persist = 0.0
+	}
+})

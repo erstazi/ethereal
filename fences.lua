@@ -66,6 +66,7 @@ add_fence("sakura", "sakura_wood", "Sakura", "ethereal_sakura_wood")
 add_fence("olive", "olive_wood", "Olive", "ethereal_olive_wood")
 add_fence("basandra", "basandra_wood", "Basandra", "ethereal_basandra_bush_wood")
 add_fence("mangrove", "mangrove_wood", "Mangrove", "mcl_mangrove_planks")
+add_fence("poplar", "poplar_wood", "Poplar", "ethereal_poplar_wood")
 
 -- add compatibility for previous ethereal gates
 

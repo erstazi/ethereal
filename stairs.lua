@@ -39,7 +39,8 @@ local function do_stair(description, name, node, groups, texture, sound)
 	elseif stairs_mod then
 
 		stairs.register_stair_and_slab(name, node, groups, texture,
-				S(description .. " Stair"), S(description .. " Slab"), sound, true)
+			S(description .. " Stair"), S(description .. " Slab"), sound, true,
+			S("Inner " .. description .. " Stair"), S("Outer " .. description .. " Stair"))
 	end
 end
 
@@ -166,6 +167,12 @@ do_stair(
 	"Mangrove Wood", "mangrove_wood", "ethereal:mangrove_wood",
 	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	{"mcl_mangrove_planks.png"},
+	default.node_sound_wood_defaults())
+
+do_stair(
+	"Poplar Wood", "poplar_wood", "ethereal:poplar_wood",
+	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	{"ethereal_poplar_wood.png"},
 	default.node_sound_wood_defaults())
 
 do_stair(

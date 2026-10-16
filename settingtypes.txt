@@ -36,6 +36,7 @@ ethereal.cold_desert (Grey sand desert biome, 1 = Enable / 0 = Disable) int 1
 ethereal.snowy_grassland (Snowy grasslands biome, 1 = Enable / 0 = Disable) int 1
 ethereal.mangrove (Mangrove forest biome, 1 = Enable / 0 = Disable) int 1
 ethereal.magical_forest (Magical forest grasslands biome, 1 = Enable / 0 = Disable) int 1
+ethereal.tawny_woods (Tawny woods grasslands biome, 1 = Enable / 0 = Disable) int 1
 ethereal.sealife (Coral and Seaweed biome, 1 = Enable / 0 = Disable) int 1
 ethereal.reefs (MT5 Coral biome, 1 = Enable / 0 = Disable) int 1
 ethereal.logs (Tree log decor, 1 = Enable / 0 = Disable) int 1
@@ -51,3 +52,5 @@ ethereal.sapling_protection_check (Check for area protection before placing sapl
 ethereal.old_biomes (Use old biome settings) bool false
 
 ethereal.pond_chance (Chance of mesa pond spawning) int 1
+
+ethereal.snowwalk (Player can walk on thin snow blocks) bool true

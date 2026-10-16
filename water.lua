@@ -89,8 +89,28 @@ core.register_abm({
 		local near = core.find_node_near(pos, 1,
 				{"default:water_source", "default:river_water_source"})
 
-		if near then
-			core.swap_node(near, {name = "default:ice"})
+		if not near then return end
+
+		core.swap_node(near, {name = "default:ice"})
+
+		if node.name ~= "ethereal:crystal_spike" then return end
+
+		local under = get_node({x = pos.x, y = pos.y - 1, z = pos.z}).name
+
+		if under ~= "ethereal:magical_dirt" then return end
+
+		local spikes = core.find_nodes_in_area(
+			{x = pos.x - 1, y = pos.y, z = pos.z - 1},
+			{x = pos.x + 1, y = pos.y, z = pos.z + 1}, {"ethereal:crystal_spike"})
+
+		if #spikes > 1 then
+
+			if math_random(1, 7) == 1 then
+
+				near.y = near.y + 0.5
+
+				core.add_item(near, "ethereal:etherium_dust")
+			end
 		end
 	end
 })
@@ -225,7 +245,7 @@ end
 
 -- magical water
 
-minetest.register_node("ethereal:magical_water", {
+core.register_node("ethereal:magical_water", {
 	description = S("Magical Water"),
 	drawtype = "liquid",
 	tiles = {
@@ -263,3 +283,9 @@ minetest.register_node("ethereal:magical_water", {
 	groups = {water = 3, liquid = 3, cools_lava = 1, not_in_creative_inventory = 1},
 	sounds = default.node_sound_water_defaults(),
 })
+
+-- Override snow depending on setting
+
+if core.settings:get_bool("ethereal.snowwalk") == false then
+	core.override_item("default:snow", {walkable = false})
+end

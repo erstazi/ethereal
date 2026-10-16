@@ -11,7 +11,7 @@ ambience.add_set("ethereal_mushroom", {
 		{name = "ethereal_mushroom", length = 1.3, pitch = 1.2, ephemeral = true},
 	},
 
-	nodes = ({"ethereal:mushroom_trunk", "ethereal:mushroom_dirt"}),
+	nodes = {"ethereal:mushroom_trunk", "ethereal:mushroom_dirt"},
 
 	sound_check = function(def)
 
@@ -34,7 +34,7 @@ ambience.add_set("ethereal_crystal", {
 		{name = "ethereal_crystal", length = 2.3, gain = 2.0, pitch = 1.1, ephemeral = true},
 	},
 
-	nodes = ({"ethereal:crystal_spike", "ethereal:crystal_dirt"}),
+	nodes = {"ethereal:crystal_spike", "ethereal:crystal_dirt"},
 
 	sound_check = function(def)
 

@@ -33,7 +33,7 @@ core.register_craft({
 
 local dirts = {
 	"Bamboo", "Jungle", "Grove", "Prairie", "Cold", "Crystal", "Mushroom", "Fiery",
-	"Gray", "Magical"
+	"Gray", "Magical", "Tawny"
 }
 
 -- loop through and register dirts
@@ -72,20 +72,19 @@ local items = {
 	["ethereal:crystalgrass"] = {
 			soil = "ethereal:crystal_dirt", item = "ethereal:crystal_spike", min = 4},
 	["ethereal:dry_shrub"] = {
-			soil = "ethereal:fiery_dirt", item = "ethereal:fire_flower", min = 8},
+			soil = "ethereal:fiery_dirt", item = "ethereal:fire_flower", min = 6},
 }
 
 local function flower_spread(pos, node)
 
 	if (core.get_node_light(pos) or 0) < 13 then return end
 
-	local pos0 = {x = pos.x - 4, y = pos.y - 2, z = pos.z - 4}
-	local pos1 = {x = pos.x + 4, y = pos.y + 2, z = pos.z + 4}
-	local num = #core.find_nodes_in_area(pos0, pos1, "group:flora")
-
 	-- stop flowers spreading too much just below top of map block
 	if core.find_node_near(pos, 2, "ignore") then return end
 
+	local pos0 = {x = pos.x - 4, y = pos.y - 2, z = pos.z - 4}
+	local pos1 = {x = pos.x + 4, y = pos.y + 2, z = pos.z + 4}
+	local num = #core.find_nodes_in_area(pos0, pos1, "group:flora")
 	local check = items[node.name]
 
 	if check and num > 3 then
@@ -111,12 +110,13 @@ local function flower_spread(pos, node)
 
 	pos.y = pos.y - 1
 
-	-- dont spread if we are on desert sand
-	if get_node(pos).name == "default:desert_sand" then return end
-
 	-- check for custom substrate to grow on, default to soil if none found
 	local plant_def = core.registered_nodes[node.name]
 	local substrate = plant_def and plant_def.flora_substrate or "group:soil"
+
+	-- dont spread if we are on desert sand, unless it's the growing substrate
+	if substrate ~= "default:desert_sand"
+	and get_node(pos).name == "default:desert_sand" then return end
 
 	 -- not on a substrate we can grow on
 	if not core.find_node_near(pos, 0, substrate, true) then return end
@@ -127,7 +127,8 @@ local function flower_spread(pos, node)
 
 	pos = soils[math_random(#soils)] -- set new position
 
-	if get_node(pos).name == "default:desert_sand" then return end -- double check
+	if substrate ~= "default:desert_sand"
+	and get_node(pos).name == "default:desert_sand" then return end -- double check
 
 	pos.y = pos.y + 1
 
@@ -174,7 +175,7 @@ end
 
 function default.grow_cactus(pos, node)
 
-	if node.param2 >= 4 then return end
+	if node.param2 >= 4 then return end -- dont grow sideways
 
 	pos.y = pos.y - 1
 
