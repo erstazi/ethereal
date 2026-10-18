@@ -8,7 +8,7 @@
 
 -- global
 
-ethereal = {version = "20260927"}
+ethereal = {version = "20261015"}
 
 -- setting helper
 
@@ -73,17 +73,6 @@ setting("number", "reefs", 1)
 setting("number", "logs", 1)
 setting("bool", "wood_rotate", true)
 
-
-local path = core.get_modpath("ethereal")
-
---[[ Load settings.conf file if found [DEPRECATED]
-
-local input = io.open(path.."/settings.conf", "r")
-
-if input then
-	dofile(path .. "/settings.conf") ; input:close() ; input = nil
-end ]]
-
 -- Falling node function
 
 ethereal.check_falling = core.check_for_falling or nodeupdate
@@ -111,6 +100,10 @@ function ethereal.add_eatable(item, hp, ftype)
 		core.override_item(item, {groups = groups})
 	end
 end
+
+-- mod path
+
+local path = core.get_modpath("ethereal")
 
 -- strawberry check and load
 

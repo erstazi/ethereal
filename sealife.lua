@@ -165,10 +165,7 @@ core.register_lbm({
 
 -- seaweed to dark green dye
 
-core.register_craft( {
-	output = "dye:dark_green 3",
-	recipe = {{"ethereal:seaweed"}}
-})
+core.register_craft({output = "dye:dark_green 3", recipe = {{"ethereal:seaweed"}} })
 
 -- coral on_place helper function
 
@@ -311,10 +308,10 @@ core.register_lbm({
 
 -- Coral > Dye
 
-core.register_craft({output = "dye:cyan 3", recipe = {{"ethereal:coral2"}}})
-core.register_craft({output = "dye:orange 3", recipe = {{"ethereal:coral3"}}})
-core.register_craft({output = "dye:pink 3", recipe = {{"ethereal:coral4"}}})
-core.register_craft({output = "dye:green 3", recipe = {{"ethereal:coral5"}}})
+core.register_craft({output = "dye:cyan 3", recipe = {{"ethereal:coral2"}} })
+core.register_craft({output = "dye:orange 3", recipe = {{"ethereal:coral3"}} })
+core.register_craft({output = "dye:pink 3", recipe = {{"ethereal:coral4"}} })
+core.register_craft({output = "dye:green 3", recipe = {{"ethereal:coral5"}} })
 
 -- Undersea Sand (used for growing seaweed and corals)
 

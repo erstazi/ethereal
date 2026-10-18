@@ -367,7 +367,7 @@ core.register_node("ethereal:mushroom", {
 	sounds = default.node_sound_wood_defaults()
 })
 
-core.register_craft({ type = "fuel", recipe = "ethereal:mushroom", burntime = 10 })
+core.register_craft({type = "fuel", recipe = "ethereal:mushroom", burntime = 10})
 
 -- brown mushroom top
 
@@ -385,7 +385,7 @@ core.register_node("ethereal:mushroom_brown", {
 	sounds = default.node_sound_wood_defaults()
 })
 
-core.register_craft({ type = "fuel", recipe = "ethereal:mushroom_brown", burntime = 10 })
+core.register_craft({type = "fuel", recipe = "ethereal:mushroom_brown", burntime = 10})
 
 -- mushroom pore (spongelike material found inside giant shrooms)
 
@@ -399,7 +399,7 @@ core.register_node("ethereal:mushroom_pore", {
 	sounds = default.node_sound_dirt_defaults()
 })
 
-core.register_craft({ type = "fuel", recipe = "ethereal:mushroom_pore", burntime = 3 })
+core.register_craft({type = "fuel", recipe = "ethereal:mushroom_pore", burntime = 3})
 
 -- hedge block
 
@@ -420,7 +420,7 @@ core.register_craft({
 	}
 })
 
-core.register_craft({ type = "fuel", recipe = "ethereal:bush", burntime = 9 })
+core.register_craft({type = "fuel", recipe = "ethereal:bush", burntime = 9})
 
 -- bush block #2
 
@@ -443,7 +443,7 @@ core.register_craft({
 	}
 })
 
-core.register_craft({ type = "fuel", recipe = "ethereal:bush2", burntime = 9 })
+core.register_craft({type = "fuel", recipe = "ethereal:bush2", burntime = 9})
 
 -- pine needles bush (replaces bush 3)
 
@@ -593,8 +593,8 @@ if core.settings:get_bool("ethereal.leaf_particles") ~= false then
 
 			local def = {
 				amount = 1, time = 2,
-				minpos = {x = pos.x - 0.4, y = pos.y - 1, z = pos.z - 0.4},
-				maxpos = {x = pos.x + 0.4, y = pos.y - 1, z = pos.z + 0.4},
+				minpos = {x = pos.x - 0.4, y = pos.y - 0.55, z = pos.z - 0.4},
+				maxpos = {x = pos.x + 0.4, y = pos.y - 0.55, z = pos.z + 0.4},
 				minvel = {x = -0.8, y = -1, z = -0.8},
 				maxvel = {x = 0.8, y = -3, z = 0.8},
 				minacc = {x = -0.05, y = -0.1, z = -0.05},

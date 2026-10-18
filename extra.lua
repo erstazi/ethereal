@@ -123,9 +123,7 @@ core.register_craft({
 
 core.register_craft({
 	output = "default:paper 2",
-	recipe = {
-		{"farming:cotton", "farming:cotton", "farming:cotton"}
-	}
+	recipe = {{"farming:cotton", "farming:cotton", "farming:cotton"}}
 })
 
 -- 4x red mushrooms make mushroom block
@@ -148,7 +146,7 @@ core.register_craft({
 
 -- X pattern craft recipes (5x 'a' in X pattern gives 5 of 'b')
 
-if ethereal.xcraft == true then
+if ethereal.xcraft then
 
 	local cheat = {
 		{"default:cobble", "default:gravel", 5},
@@ -243,7 +241,7 @@ local function add_candle(col, dcol)
 	if dcol ~= "" then
 		core.register_craft({
 			output = "ethereal:candle" .. under .. col,
-			recipe = { {"group:candle", "dye:" .. col} }
+			recipe = {{"group:candle", "dye:" .. col}}
 		})
 	end
 end
@@ -373,7 +371,6 @@ core.register_node("ethereal:glostone", {
 	tiles = {"ethereal_glostone.png"},
 	groups = {cracky = 3},
 	light_source = 13,
-	drop = "ethereal:glostone",
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -396,12 +393,12 @@ core.register_craftitem("ethereal:charcoal_lump", {
 
 core.register_craft({
 	output = "ethereal:charcoal_lump 2",
-	recipe = { {"ethereal:scorched_tree"} }
+	recipe = {{"ethereal:scorched_tree"}}
 })
 
 core.register_craft({
 	output = "ethereal:charcoal_lump 2",
-	recipe = { {"ethereal:all_faces_scorched_tree"} }
+	recipe = {{"ethereal:all_faces_scorched_tree"}}
 })
 
 core.register_craft({

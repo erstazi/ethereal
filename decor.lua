@@ -84,7 +84,7 @@ add_deco(ethereal.magical_forest, { -- magical grass
 
 add_deco(ethereal.magical_forest, { -- grass or black tulip
 	place_on = "ethereal:magical_dirt",
-	fill_ratio = 0.002, y_min = 3, y_max = 42,
+	fill_ratio = 0.003, y_min = 3, y_max = 42,
 	biomes = {"magical_forest"},
 	decoration = {"flowers:tulip_black", "flowers:dandelion_white",
 		"bakedclay:lazarus"} })

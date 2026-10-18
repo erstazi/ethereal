@@ -60,20 +60,20 @@ local old = core.settings:get_bool("ethereal.old_biomes")
 
 add_schem(ethereal.tawny_woods, {
 	place_on = "ethereal:tawny_dirt",
-	fill_ratio = 0.003, y_min = 3, y_max = 71, sidelen = 80, place_offset_y = 1,
+	fill_ratio = 0.003, y_min = 3, y_max = 71, place_offset_y = 1,
 	biomes = {"tawny_woods"},
 	schematic = ethereal.poplar_tree})
 
 add_schem(ethereal.tawny_woods, {
 	place_on = "ethereal:tawny_dirt",
-	fill_ratio = 0.003, y_min = 3, y_max = 71, sidelen = 80, place_offset_y = 1,
+	fill_ratio = 0.003, y_min = 3, y_max = 71, place_offset_y = 1,
 	biomes = {"tawny_woods"},
 	schematic = ethereal.poplar_tree,
 	replacements = {["ethereal:poplar_leaves_red"] = "ethereal:poplar_leaves_yellow"} })
 
 add_schem(ethereal.tawny_woods, {
 	place_on = "ethereal:tawny_dirt",
-	fill_ratio = 0.003, y_min = 3, y_max = 71, sidelen = 80, place_offset_y = 1,
+	fill_ratio = 0.003, y_min = 3, y_max = 71, place_offset_y = 1,
 	biomes = {"tawny_woods"},
 	schematic = ethereal.poplar_tree,
 	replacements = {["ethereal:poplar_leaves_red"] = "ethereal:poplar_leaves_orange"} })
@@ -94,21 +94,21 @@ add_schem(ethereal.glacier, {
 
 add_schem(ethereal.magical_forest, {
 	place_on = "ethereal:magical_dirt",
-	fill_ratio = 0.002, y_min = 3, y_max = 42, sidelen = 80,
+	fill_ratio = 0.002, y_min = 3, y_max = 42,
 	biomes = {"magical_forest"},
 	schematic = ethereal.birchtree,
 	replacements = { ["ethereal:birch_leaves"] = "ethereal:birch_leaves2" } })
 
 add_schem(ethereal.magical_forest, {
 	place_on = "ethereal:magical_dirt",
-	fill_ratio = 0.002, y_min = 3, y_max = 42, sidelen = 80,
+	fill_ratio = 0.002, y_min = 3, y_max = 42,
 	biomes = {"magical_forest"},
 	schematic = ethereal.birchtree,
 	replacements = { ["ethereal:birch_leaves"] = "ethereal:birch_leaves3" } })
 
 add_schem(ethereal.magical_forest, {
 	place_on = "ethereal:magical_dirt",
-	fill_ratio = 0.002, y_min = 3, y_max = 42, sidelen = 80,
+	fill_ratio = 0.002, y_min = 3, y_max = 42,
 	biomes = {"magical_forest"},
 	schematic = ethereal.birchtree,
 	replacements = { ["ethereal:birch_leaves"] = "ethereal:birch_leaves4" } })
@@ -117,14 +117,14 @@ add_schem(ethereal.magical_forest, {
 
 add_schem(ethereal.mangrove, {
 	place_on = {"ethereal:mud"},
-	sidelen = 80, fill_ratio = 0.023, y_min = -1, y_max = 6,
+	fill_ratio = 0.023, y_min = -1, y_max = 6,
 	biomes = {"mangrove", "mangrove_shore"},
 	schematic = ethereal.mangrove_tree_2,
 	flags = "place_center_x, place_center_z, force_placement"})
 
 add_schem(ethereal.mangrove, {
 	place_on = {"ethereal:mud"},
-	sidelen = 80, fill_ratio = 0.023, y_min = 1, y_max = 6,
+	fill_ratio = 0.023, y_min = 1, y_max = 6,
 	biomes = {"mangrove", "mangrove_shore"},
 	schematic = ethereal.mangrove_tree,
 	flags = "place_center_x, place_center_z, force_placement"})
@@ -360,7 +360,7 @@ add_schem(ethereal.savanna, {
 
 add_schem(ethereal.grayness, {
 	place_on = "ethereal:gray_dirt",
-	fill_ratio = 0.01, sidelen = 16,
+	fill_ratio = 0.01,
 	biomes = {"grayness"},
 	schematic = ethereal.willow,
 	spawn_by = "ethereal:gray_dirt", num_spawn_by = 6})

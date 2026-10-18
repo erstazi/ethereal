@@ -464,12 +464,14 @@ add_moss("Tawny", "ethereal_grass_tawny_top.png", "ethereal:tawny_grass")
 
 local function add_shroom(name, desc, ad)
 
+	local tex = "ethereal_illumishroom_" .. name .. ".png"
+
 	core.register_node("ethereal:illumishroom" .. ad, {
 		description = S(desc .. " Illumishroom"),
 		drawtype = "plantlike",
-		tiles = {"ethereal_illumishroom_" .. name .. ".png"},
-		inventory_image = "ethereal_illumishroom_" .. name .. ".png",
-		wield_image = "ethereal_illumishroom_" .. name .. ".png",
+		tiles = {tex},
+		inventory_image = tex,
+		wield_image = tex,
 		paramtype = "light",
 		light_source = 5,
 		sunlight_propagates = true,
@@ -508,7 +510,8 @@ core.register_node("ethereal:poppy", {
 	sounds = default.node_sound_leaves_defaults(),
 })
 
--- craft dye from plant
+-- dye and alias
+
 core.register_craft({ output = "dye:red 4", recipe = {{"ethereal:poppy"}} })
 
 core.register_alias("xanadu:poppy", "ethereal:poppy")

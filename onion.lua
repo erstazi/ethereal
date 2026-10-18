@@ -110,9 +110,7 @@ else
 			-- are we on wet soil?
 			pos.y = pos.y - 1
 
-			if core.get_item_group(get_node(pos).name, "soil") < 3 then
-				return
-			end
+			if core.get_item_group(get_node(pos).name, "soil") < 3 then return end
 
 			pos.y = pos.y + 1
 
