@@ -93,6 +93,7 @@ add_leaves("ethereal:willow_twig", {
 	drop = {
 		max_items = 1, items = {
 			{items = {"ethereal:willow_sapling"}, rarity = 50},
+			{items = {"default:stick"}, rarity = 30},
 			{items = {"ethereal:willow_twig"}}
 		}
 	}

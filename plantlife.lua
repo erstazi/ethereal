@@ -167,6 +167,7 @@ core.register_node("ethereal:spore_grass", {
 	wield_image = "ethereal_spore_grass.png",
 	paramtype = "light",
 	sunlight_propagates = true,
+	light_source = 2,
 	waving = 1,
 	walkable = false,
 	buildable_to = true,

@@ -363,7 +363,8 @@ add_schem(ethereal.grayness, {
 	fill_ratio = 0.01,
 	biomes = {"grayness"},
 	schematic = ethereal.willow,
-	spawn_by = "ethereal:gray_dirt", num_spawn_by = 6})
+	spawn_by = "ethereal:gray_dirt", num_spawn_by = 6,
+	flags = "place_center_x, place_center_z, force_placement"})
 
 -- default large pine tree for lower elevation
 

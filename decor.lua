@@ -422,7 +422,7 @@ add_deco(ethereal.desert, {
 
 add_deco(ethereal.mushroom, { -- spore grass
 	place_on = {"ethereal:mushroom_dirt"},
-	fill_ratio = 0.1,
+	fill_ratio = 0.06,
 	biomes = {"mushroom"},
 	decoration = "ethereal:spore_grass"})
 
@@ -435,7 +435,7 @@ add_deco(ethereal.mushroom, { -- slime mold
 add_deco(ethereal.mushroom, { -- red and brown mushroom
 	place_on = {"default:dirt_with_rainforest_litter", "default:dirt_with_grass",
 		"ethereal:mushroom_dirt"},
-	fill_ratio = 0.004,
+	fill_ratio = 0.005,
 	biomes = {"mushroom"},
 	decoration = {"flowers:mushroom_brown", "flowers:mushroom_red"} })
 

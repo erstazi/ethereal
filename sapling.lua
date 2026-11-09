@@ -170,7 +170,12 @@ function ethereal.grow_palm_tree(pos)
 end
 
 function ethereal.grow_willow_tree(pos)
-	add_tree(pos, ethereal.willow_from_sapling)
+
+	if math.random(20) == 1 then
+		add_tree(pos, ethereal.old_willow)
+	else
+		add_tree(pos, ethereal.willow)
+	end
 end
 
 function ethereal.grow_redwood_tree(pos)
